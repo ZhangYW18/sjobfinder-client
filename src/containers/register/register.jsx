@@ -4,11 +4,12 @@
 
 import React from 'react';
 import {
-  Button, NavBar, Radio, Input, Form, Space
+  Button, NavBar, Radio, Input, Form, Space, Toast
 } from "antd-mobile";
 import Logo from "../../components/logo/logo";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import axios from '../../utils/axios'
 
 export default () => {
 
@@ -21,10 +22,13 @@ export default () => {
   const toLogin = () => navigate("/login", { replace: true })
 
   const register = () => {
-    console.log(username)
-    console.log(password)
-    console.log(confirm)
-    console.log(identity)
+    if (password !== confirm) {
+      Toast.show({
+        content: 'Two passwords inputted is not consistent',
+        position: 'bottom',
+      })
+    }
+
 
   }
 

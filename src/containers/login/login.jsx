@@ -4,23 +4,66 @@
 
 import React from 'react';
 import {
-  Button, NavBar, Input, Form, Space
+  Button, NavBar, Input, Form, Space, Toast, DotLoading
 } from "antd-mobile";
 import Logo from "../../components/logo/logo";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {loginAsync} from "../../redux/reducers/user";
 
 export default () => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  let navigate = useNavigate();
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+  const loading = useSelector((state) => state.user.loading)
+
   const toRegister = () => navigate("/register", { replace: true })
 
   const login = () => {
-    console.log(username)
-    console.log(password)
+    if (username === '') {
+      Toast.show({
+        content: 'Empty Username',
+        position: 'bottom',
+      })
+      return;
+    }
+
+    if (password === '') {
+      Toast.show({
+        content: 'Empty Password',
+        position: 'bottom',
+      })
+      return;
+    }
+
+    dispatch(loginAsync({
+      username: username,
+      password: password,
+    })).then((resp) => {
+      console.log('resp', resp)
+      if (resp.payload.code === 0) {
+        Toast.show({
+          icon: 'success',
+          content: resp.payload.msg,
+        })
+      } else {
+        Toast.show({
+          icon: 'fail',
+          content: resp.payload.msg,
+        })
+      }
+    }).catch((err) => {
+      console.log(err)
+      Toast.show({
+        icon: 'fail',
+        content: err.message(),
+      })
+    });
   }
 
   return (
@@ -37,7 +80,7 @@ export default () => {
           layout='horizontal'
           footer={
             <Button block onClick={login} color='primary' size='middle'>
-              Login
+              {loading === `pending` ? <DotLoading color='primary' /> : `Login`}
             </Button>
           }
         >
