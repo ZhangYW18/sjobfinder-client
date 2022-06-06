@@ -4,32 +4,87 @@
 
 import React from 'react';
 import {
-  Button, NavBar, Radio, Input, Form, Space, Toast
+  Button, NavBar, Radio, Input, Form, Space, Toast, DotLoading
 } from "antd-mobile";
 import Logo from "../../components/logo/logo";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import axios from '../../utils/axios'
+import {useDispatch, useSelector} from "react-redux";
+import {registerAsync} from "../../redux/reducers/user";
 
 export default () => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')
-  const [identity, setIdentity] = useState('')
+  const [identity, setIdentity] = useState('hunter')
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch()
+  const loading = useSelector((state) => state.user.loading)
+
   const toLogin = () => navigate("/login", { replace: true })
+  const toMain = () => navigate("/", { replace: true })
 
   const register = () => {
-    if (password !== confirm) {
+    if (username === '') {
       Toast.show({
-        content: 'Two passwords inputted is not consistent',
+        content: 'Empty Username',
         position: 'bottom',
       })
+      return;
     }
 
+    if (password === '') {
+      Toast.show({
+        content: 'Empty Password',
+        position: 'bottom',
+      })
+      return;
+    }
 
+    if (confirm === '') {
+      Toast.show({
+        content: 'Empty Confirm Password',
+        position: 'bottom',
+      })
+      return;
+    }
+
+    if (password !== confirm) {
+      Toast.show({
+        content: 'Two passwords inputted are not consistent',
+        position: 'bottom',
+      })
+      return;
+    }
+
+    dispatch(registerAsync({
+      username: username,
+      password: password,
+      identity: identity,
+    })).then((resp) => {
+      console.log('resp', resp)
+      if (resp.payload.code === 0) {
+        Toast.show({
+          icon: 'success',
+          content: resp.payload.msg,
+        });
+        toMain();
+      } else {
+        Toast.show({
+          icon: 'fail',
+          content: resp.payload.msg,
+        })
+      }
+    }).catch((err) => {
+      console.log(err)
+      Toast.show({
+        icon: 'fail',
+        content: err.message(),
+      })
+    });
   }
 
   return (
@@ -46,7 +101,7 @@ export default () => {
           layout='horizontal'
           footer={
             <Button block onClick={register} color='primary' size='middle'>
-              Register
+              {loading === `pending` ? <DotLoading color='primary' /> : `Register`}
             </Button>
           }
         >
@@ -86,7 +141,6 @@ export default () => {
             <Space direction='vertical'>
               <div>Identity</div>
               <Radio.Group
-                defaultValue='hunter'
                 value={identity}
                 onChange={val => {
                   setIdentity(val)

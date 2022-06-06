@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/user.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/axios.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/login/login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/register/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/register/register.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +83,7 @@
       <workItem from="1654416229826" duration="5473000" />
       <workItem from="1654429183747" duration="7180000" />
       <workItem from="1654436541855" duration="4539000" />
-      <workItem from="1654479975905" duration="5740000" />
+      <workItem from="1654479975905" duration="9181000" />
     </task>
     <servers />
   </component>

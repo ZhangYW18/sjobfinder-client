@@ -23,6 +23,7 @@ export default () => {
   const loading = useSelector((state) => state.user.loading)
 
   const toRegister = () => navigate("/register", { replace: true })
+  const toMain = () => navigate("/", { replace: true })
 
   const login = () => {
     if (username === '') {
@@ -51,6 +52,7 @@ export default () => {
           icon: 'success',
           content: resp.payload.msg,
         })
+        toMain();
       } else {
         Toast.show({
           icon: 'fail',

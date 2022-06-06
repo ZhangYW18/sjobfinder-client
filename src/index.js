@@ -15,17 +15,6 @@ const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
   <Provider store={store}>
-  <App/>
+    <App/>
   </Provider>
 );
-
-/*
-ReactDOM.render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
-  document.getElementById('root')
-);
-*/
-
-
