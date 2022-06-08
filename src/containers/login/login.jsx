@@ -11,8 +11,9 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {loginAsync} from "../../redux/reducers/user";
+import checkEmpty from "../../utils/check-empty";
 
-export default () => {
+function Login(props) {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -26,21 +27,8 @@ export default () => {
   const toMain = () => navigate("/", { replace: true })
 
   const login = () => {
-    if (username === '') {
-      Toast.show({
-        content: 'Empty Username',
-        position: 'bottom',
-      })
-      return;
-    }
-
-    if (password === '') {
-      Toast.show({
-        content: 'Empty Password',
-        position: 'bottom',
-      })
-      return;
-    }
+    if (checkEmpty(username, 'Empty Username')) return;
+    if (checkEmpty(password, 'Empty Password')) return;
 
     dispatch(loginAsync({
       username: username,
@@ -86,7 +74,7 @@ export default () => {
             </Button>
           }
         >
-          <Form.Item label='Username' name='username'>
+          <Form.Item label='Username' name='username' rules={[{ required: true}]}>
             <Input
               placeholder='Username'
               value={username}
@@ -96,7 +84,7 @@ export default () => {
               clearable />
           </Form.Item>
 
-          <Form.Item label='Password' name='password'>
+          <Form.Item label='Password' name='password' rules={[{ required: true}]}>
             <Input
               placeholder='Password'
               type='password'
@@ -116,3 +104,5 @@ export default () => {
     </div>
   );
 }
+
+export default Login;

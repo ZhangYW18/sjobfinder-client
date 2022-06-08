@@ -8,7 +8,7 @@ export default () => {
   return (
     <HashRouter>
       <Routes>
-        <Route index element={<Main/>}/>
+        <Route index path="/*" element={<Main/>}/>
         <Route path="login" element={<Login/>}/>
         <Route path="register" element={<Register/>}/>
       </Routes>

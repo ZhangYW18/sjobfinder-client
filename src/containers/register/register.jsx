@@ -11,9 +11,9 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {registerAsync} from "../../redux/reducers/user";
+import checkEmpty from "../../utils/check-empty";
 
-export default () => {
-
+function Register(props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')
@@ -28,29 +28,9 @@ export default () => {
   const toMain = () => navigate("/", { replace: true })
 
   const register = () => {
-    if (username === '') {
-      Toast.show({
-        content: 'Empty Username',
-        position: 'bottom',
-      })
-      return;
-    }
-
-    if (password === '') {
-      Toast.show({
-        content: 'Empty Password',
-        position: 'bottom',
-      })
-      return;
-    }
-
-    if (confirm === '') {
-      Toast.show({
-        content: 'Empty Confirm Password',
-        position: 'bottom',
-      })
-      return;
-    }
+    if (checkEmpty(username, 'Empty Username')) return;
+    if (checkEmpty(password, 'Empty Password')) return;
+    if (checkEmpty(confirm, 'Empty Confirm Password')) return;
 
     if (password !== confirm) {
       Toast.show({
@@ -105,7 +85,7 @@ export default () => {
             </Button>
           }
         >
-          <Form.Item label='Username' name='username'>
+          <Form.Item label='Username' name='username' rules={[{ required: true}]}>
             <Input
               placeholder='Username'
               value={username}
@@ -115,7 +95,7 @@ export default () => {
               clearable />
           </Form.Item>
 
-          <Form.Item label='Password' name='password'>
+          <Form.Item label='Password' name='password' rules={[{ required: true}]}>
             <Input
               placeholder='Password'
               type='password'
@@ -126,7 +106,7 @@ export default () => {
               clearable />
           </Form.Item>
 
-          <Form.Item label='Confirm' name='confirm'>
+          <Form.Item label='Confirm' name='confirm' rules={[{ required: true}]}>
             <Input
               placeholder='Confirm Password'
               type='password'
@@ -157,3 +137,5 @@ export default () => {
     </div>
   );
 }
+
+export default Register;
