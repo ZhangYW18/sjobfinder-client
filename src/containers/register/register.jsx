@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {
-  Button, NavBar, Radio, Input, Form, Space, Toast, DotLoading
+  Button, NavBar, Radio, Input, Form, Space, Toast
 } from "antd-mobile";
 import Logo from "../../components/logo/logo";
 import {useState} from "react";
@@ -25,12 +25,17 @@ function Register(props) {
   const loading = useSelector((state) => state.user.loading)
 
   const toLogin = () => navigate("/login", { replace: true })
-  const toMain = () => navigate("/", { replace: true })
+  const toInfo = (identity) => {
+    if (identity === 'hunter')
+      navigate("/hunter-info", { replace: true });
+    else
+      navigate("/recruiter-info", { replace: true });
+  }
 
   const register = () => {
     if (checkEmpty(username, 'Empty Username')) return;
     if (checkEmpty(password, 'Empty Password')) return;
-    if (checkEmpty(confirm, 'Empty Confirm Password')) return;
+    if (checkEmpty(confirm, 'Please Confirm Password')) return;
 
     if (password !== confirm) {
       Toast.show({
@@ -51,7 +56,7 @@ function Register(props) {
           icon: 'success',
           content: resp.payload.msg,
         });
-        toMain();
+        toInfo(identity);
       } else {
         Toast.show({
           icon: 'fail',
@@ -80,12 +85,12 @@ function Register(props) {
         <Form
           layout='horizontal'
           footer={
-            <Button block onClick={register} color='primary' size='middle'>
-              {loading === `pending` ? <DotLoading color='primary' /> : `Register`}
+            <Button block onClick={register} color='primary' size='middle' loading={loading}>
+              Register
             </Button>
           }
         >
-          <Form.Item label='Username' name='username' rules={[{ required: true}]}>
+          <Form.Item label='Username' name='username'>
             <Input
               placeholder='Username'
               value={username}
@@ -95,7 +100,7 @@ function Register(props) {
               clearable />
           </Form.Item>
 
-          <Form.Item label='Password' name='password' rules={[{ required: true}]}>
+          <Form.Item label='Password' name='password'>
             <Input
               placeholder='Password'
               type='password'
@@ -106,7 +111,7 @@ function Register(props) {
               clearable />
           </Form.Item>
 
-          <Form.Item label='Confirm' name='confirm' rules={[{ required: true}]}>
+          <Form.Item label='Confirm' name='confirm'>
             <Input
               placeholder='Confirm Password'
               type='password'

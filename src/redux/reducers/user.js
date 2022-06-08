@@ -23,7 +23,8 @@ const initialState = {
   _id: '',
   username: '',
   identity: '',
-  loading: 'idle', // 'idle' | 'pending'
+  avatar: -1,
+  loading: false, // 'idle' | 'pending'
 }
 
 export const userSlice = createSlice({
@@ -35,7 +36,7 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     // Handle loginAsync
     builder.addCase(loginAsync.pending, (state, action) => {
-      state.loading = 'pending';
+      state.loading = true;
     });
     builder.addCase(loginAsync.fulfilled, (state, action) => {
       // console.log('fulfilled', action);
@@ -43,12 +44,13 @@ export const userSlice = createSlice({
         state.username = action.payload.data.username;
         state.identity = action.payload.data.identity;
         state._id = action.payload.data._id;
+        state.avatar = action.payload.data.avatar;
       }
-      state.loading = 'idle';
+      state.loading = false;
     });
     // Handle registerAsync
     builder.addCase(registerAsync.pending, (state, action) => {
-      state.loading = 'pending';
+      state.loading = true;
     });
     builder.addCase(registerAsync.fulfilled, (state, action) => {
       // console.log('fulfilled', action);
@@ -57,7 +59,7 @@ export const userSlice = createSlice({
         state.identity = action.payload.data.identity;
         state._id = action.payload.data._id;
       }
-      state.loading = 'idle';
+      state.loading = false;
     });
   },
 })

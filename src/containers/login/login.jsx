@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {
-  Button, NavBar, Input, Form, Space, Toast, DotLoading
+  Button, NavBar, Input, Form, Space, Toast
 } from "antd-mobile";
 import Logo from "../../components/logo/logo";
 import {useState} from "react";
@@ -25,6 +25,12 @@ function Login(props) {
 
   const toRegister = () => navigate("/register", { replace: true })
   const toMain = () => navigate("/", { replace: true })
+  const toInfo = (identity) => {
+    if (identity === 'hunter')
+      navigate("/hunter-info", { replace: true });
+    else
+      navigate("/recruiter-info", { replace: true });
+  }
 
   const login = () => {
     if (checkEmpty(username, 'Empty Username')) return;
@@ -40,7 +46,10 @@ function Login(props) {
           icon: 'success',
           content: resp.payload.msg,
         })
-        toMain();
+        if (!resp.payload.data.avatar)
+          toInfo(resp.payload.data.identity);
+        else
+          toMain();
       } else {
         Toast.show({
           icon: 'fail',
@@ -69,12 +78,17 @@ function Login(props) {
         <Form
           layout='horizontal'
           footer={
-            <Button block onClick={login} color='primary' size='middle'>
-              {loading === `pending` ? <DotLoading color='primary' /> : `Login`}
-            </Button>
+            <div>
+              <Button block onClick={login} color='primary' size='large' loading={loading}>
+                Login
+              </Button>
+              <Button block onClick={toRegister} size='large'>
+              Register
+              </Button>
+            </div>
           }
         >
-          <Form.Item label='Username' name='username' rules={[{ required: true}]}>
+          <Form.Item label='Username' name='username'>
             <Input
               placeholder='Username'
               value={username}
@@ -84,7 +98,7 @@ function Login(props) {
               clearable />
           </Form.Item>
 
-          <Form.Item label='Password' name='password' rules={[{ required: true}]}>
+          <Form.Item label='Password' name='password'>
             <Input
               placeholder='Password'
               type='password'
@@ -95,10 +109,6 @@ function Login(props) {
               clearable />
           </Form.Item>
         </Form>
-
-        <Button block onClick={toRegister} size='middle'>
-          Register
-        </Button>
 
       </Space>
     </div>

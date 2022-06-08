@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="" />
+    <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/containers/new-post/new-post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/avatar-selector/avatar-selector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar-selector/avatar-selector.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/login/login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/recruiter-info/recruiter-info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/recruiter-info/recruiter-info.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/register/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/register/register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/user.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +91,7 @@
       <workItem from="1654436541855" duration="4539000" />
       <workItem from="1654479975905" duration="9849000" />
       <workItem from="1654586973747" duration="19969000" />
-      <workItem from="1654616998542" duration="3100000" />
+      <workItem from="1654616998542" duration="11278000" />
     </task>
     <servers />
   </component>
