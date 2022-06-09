@@ -9,6 +9,7 @@ function FormInput(props) {
              onChange={val => {
                props.setVal(val)
              }}
+             defaultValue={props.defaultValue}
              clearable />
     </Form.Item>
   )

@@ -5,14 +5,16 @@ export const userAPI = {
   login:
     (username, password) => axios.
       post(apiBaseUrl + '/user/login', {
-        username,
-        password,
+        username, password
       }),
   register:
     (username, password, identity) => axios.
       post(apiBaseUrl + '/user/register', {
-        username,
-        password,
-        identity,
+        username, password, identity
+      }),
+  updateProfile:
+    (_id, name, avatar, introduction, preference, company) => axios.
+      post(apiBaseUrl + '/user/profile', {
+        _id, name, avatar, introduction, preference, company
       }),
 }

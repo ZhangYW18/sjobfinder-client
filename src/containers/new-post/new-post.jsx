@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
 import {Button, Form, NavBar, Radio, Space, TextArea} from "antd-mobile";
 import FormInput from "../../components/form-inputs/form-input";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function NewPost(props) {
-  const [title, setTitle] = useState('')
+  const location = useLocation();
+
+  const [title, setTitle] = useState(location.state.title)
   const [level, setLevel] = useState('entry')
-  const [description, setDescription] = useState('')
+  const [description, setDescription] = useState(location.state.title)
 
   const navigate = useNavigate();
 
   const addNewJobPost = () => {
+    console.log(title)
 
+    // if (success) navigate(-1)
   }
 
   const toRecruiterInfo = () => {
@@ -20,14 +24,14 @@ function NewPost(props) {
 
   return (
     <div>
-      <NavBar back='Back' onBack={toRecruiterInfo}>
+      <NavBar onBack={toRecruiterInfo}>
         Add a New Job Post
       </NavBar>
       <Form
         layout='horizontal'
         footer={<Button block color='success' onClick={addNewJobPost}>Add This Job Post</Button>}
       >
-        <FormInput name='Job Title' val={title} setVal={setTitle}/>
+        <FormInput name='Job Title' val={title} setVal={setTitle} defaultValue={location.state.title}/>
         <Form.Item label='Job Level'>
           <Radio.Group
             value={level}
@@ -46,6 +50,7 @@ function NewPost(props) {
           <TextArea
             className='description'
             placeholder='Job Description'
+            defaultValue={location.state.description}
             value={description}
             onChange={val => {
               setDescription(val)

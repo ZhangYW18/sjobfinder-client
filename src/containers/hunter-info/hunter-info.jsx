@@ -3,24 +3,64 @@
  */
 
 import React, {useState} from 'react';
-import {Button, Form, Space, TextArea} from "antd-mobile";
+import {Button, Form, NavBar, Space, TextArea, Toast} from "antd-mobile";
 import AvatarSelector from "../../components/avatar-selector/avatar-selector";
 import FormInput from "../../components/form-inputs/form-input";
+import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {updateProfileAsync} from "../../redux/reducers/user";
 
 function HunterInfo(props) {
-  const [avatar, setAvatar] = useState(0)
-  const [name, setName] = useState('')
-  const [preference, setPreference] = useState('')
-  const [introduction, setIntroduction] = useState('')
+  const dispatch = useDispatch()
+
+  const user = useSelector((state) => state.user)
+  // TODO set default value for form items
+  const [avatar, setAvatar] = useState(user.avatar === -1 ? 0 : user.avatar)
+  const [name, setName] = useState(user.name)
+  const [preference, setPreference] = useState(user.preference)
+  const [introduction, setIntroduction] = useState(user.introduction)
+  // TODO add a picker to select education level
+  // const [education, setEducation] = useState('')
+
+  const navigate = useNavigate()
 
   const submitHunterInfo = () => {
-    console.log(avatar)
-    console.log(name)
-    console.log(introduction)
+    // Submit info to server and update
+    dispatch(updateProfileAsync({
+      _id: user._id,
+      //_id: "629d83d538155d457dcbea77",
+      avatar: avatar,
+      name: name,
+      preference,
+      introduction,
+    })).then((resp) => {
+      console.log('resp', resp)
+      if (resp.payload.code === 0) {
+        Toast.show({
+          icon: 'success',
+          content: resp.payload.msg,
+        });
+      } else {
+        Toast.show({
+          icon: 'fail',
+          content: resp.payload.msg,
+        })
+      }
+    }).catch((err) => {
+      console.log(err)
+      Toast.show({
+        icon: 'fail',
+        content: err.message(),
+      })
+    });
   }
 
   return (
     <div className='recruiter-info'>
+      <NavBar onBack={() => navigate("/")}>
+        Complete Your Profile
+      </NavBar>
+
       <Form
         layout='horizontal'
         footer={<Button block color='primary' onClick={submitHunterInfo}>Submit</Button>}

@@ -19,20 +19,35 @@ export const registerAsync = createAsyncThunk(
   }
 )
 
+export const updateProfileAsync = createAsyncThunk(
+  'user/profile',
+  async (args, thunkAPI) => {
+    const {_id, name, avatar, introduction, preference, company} = args
+    const response = await userAPI.updateProfile(_id, name, avatar, introduction, preference, company)
+    return response.data
+  }
+)
+
 const initialState = {
+  // required fields for a user
   _id: '',
   username: '',
   identity: '',
+  // optional fields for a user
+  name: '',
   avatar: -1,
+  introduction: '',
+  preference: '',
+  company: '',
+  jobs: [],
+
   loading: false, // 'idle' | 'pending'
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     // Handle loginAsync
     builder.addCase(loginAsync.pending, (state, action) => {
@@ -41,10 +56,7 @@ export const userSlice = createSlice({
     builder.addCase(loginAsync.fulfilled, (state, action) => {
       // console.log('fulfilled', action);
       if (action.payload.code === 0) {
-        state.username = action.payload.data.username;
-        state.identity = action.payload.data.identity;
-        state._id = action.payload.data._id;
-        state.avatar = action.payload.data.avatar;
+        state = action.payload.data;
       }
       state.loading = false;
     });
@@ -55,11 +67,20 @@ export const userSlice = createSlice({
     builder.addCase(registerAsync.fulfilled, (state, action) => {
       // console.log('fulfilled', action);
       if (action.payload.code === 0) {
-        state.username = action.payload.data.username;
-        state.identity = action.payload.data.identity;
-        state._id = action.payload.data._id;
+        state = action.payload.data;
       }
       state.loading = false;
+    });
+    // Handle updateProfileAsync
+    builder.addCase(updateProfileAsync.pending, (state, action) => {
+      //state.loading = true;
+    });
+    builder.addCase(updateProfileAsync.fulfilled, (state, action) => {
+      // console.log('fulfilled', action);
+      if (action.payload.code === 0) {
+        state = action.payload.data;
+      }
+      //state.loading = false;
     });
   },
 })
