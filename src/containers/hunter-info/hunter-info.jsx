@@ -40,7 +40,7 @@ function HunterInfo(props) {
           icon: 'success',
           content: resp.payload.msg,
         });
-        navigate("/");
+        navigate("/personal")
       } else {
         Toast.show({
           icon: 'fail',
@@ -58,7 +58,7 @@ function HunterInfo(props) {
 
   return (
     <div className='recruiter-info'>
-      <NavBar onBack={() => navigate("/")}>
+      <NavBar onBack={() => navigate("/personal")}>
         Complete Your Profile
       </NavBar>
 
@@ -70,12 +70,13 @@ function HunterInfo(props) {
           <Form.Item name='Avatar'>
             <AvatarSelector avatar={avatar} setAvatar={setAvatar}/>
           </Form.Item>
-          <FormInput name='Name' val={name} setVal={setName}/>
-          <FormInput name='Job Preference' val={preference} setVal={setPreference}/>
+          <FormInput name='Name' val={name} defaultValue={name} setVal={setName}/>
+          <FormInput name='Job Preference' val={preference} defaultValue={preference} setVal={setPreference}/>
           <Form.Item name='Self Introduction'>
             <TextArea
               placeholder='Self Introduction'
               value={introduction}
+              defaultValue={introduction}
               onChange={val => {
                 setIntroduction(val)
               }}

@@ -7,21 +7,25 @@ import {Route, Routes} from "react-router-dom";
 import {TabBar} from "antd-mobile";
 import RecruiterInfo from "../recruiter-info/recruiter-info";
 import HunterInfo from "../hunter-info/hunter-info";
-import NewPost from "../new-post/new-post";
+import JobDetail from "../job-detail/job-detail";
+import {useSelector} from "react-redux";
+import Personal from "../personal/personal";
 
-class Main extends Component {
-  render() {
-    return (
-      <div>
-        <Routes>
-          <Route index element={<div>main</div>}/>
-          <Route path="recruiter-info" element={<RecruiterInfo/>}/>
-          <Route path="new-post" element={<NewPost/>} />
-          <Route path="hunter-info" element={<HunterInfo/>}/>
-        </Routes>
-      </div>
-    );
-  }
+function Main(props) {
+
+  const user = useSelector((state) => state.user.user)
+
+  return (
+    <div>
+      <Routes>
+        <Route index element={<div>main</div>}/>
+        <Route path="recruiter-info" element={<RecruiterInfo/>}/>
+        <Route path="job-detail" element={<JobDetail/>} />
+        <Route path="hunter-info" element={<HunterInfo/>}/>
+        <Route path="personal" element={<Personal/>}/>
+      </Routes>
+    </div>
+  );
 }
 
 export default Main;

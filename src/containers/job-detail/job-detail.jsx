@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {jobAPI} from "../../api/job";
 
 // TODO not tested, test after personal page finished
-function NewPost(props) {
+function JobDetail(props) {
 
   const location = useLocation();
   useEffect( () => {
@@ -109,4 +109,4 @@ function NewPost(props) {
   );
 }
 
-export default NewPost;
+export default JobDetail;

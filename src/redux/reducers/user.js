@@ -34,13 +34,16 @@ const initialState = {
     _id: '',
     username: '',
     identity: '',
+    avatar: -1,
   }
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+
+  },
   extraReducers: (builder) => {
     // Handle loginAsync
     builder.addCase(loginAsync.fulfilled, (state, action) => {
@@ -51,6 +54,12 @@ export const userSlice = createSlice({
     });
     // Handle registerAsync
     builder.addCase(registerAsync.fulfilled, (state, action) => {
+      // console.log('fulfilled', action);
+      if (action.payload.code === 0) {
+        state.user = action.payload.data.user;
+      }
+    });
+    builder.addCase(updateProfileAsync.fulfilled, (state, action) => {
       // console.log('fulfilled', action);
       if (action.payload.code === 0) {
         state.user = action.payload.data.user;

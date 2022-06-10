@@ -24,7 +24,8 @@ function Login(props) {
   const loading = useSelector((state) => state.user.loading)
 
   const toRegister = () => navigate("/register", { replace: true })
-  const toMain = () => navigate("/", { replace: true })
+  // TODO debug
+  const toMain = () => navigate("/personal", { replace: true })
   const toInfo = (identity) => {
     if (identity === 'hunter')
       navigate("/hunter-info", { replace: true });
