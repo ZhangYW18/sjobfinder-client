@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/job.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants/job.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/job.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form-inputs/form-input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form-inputs/form-input.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/login/login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/new-post/new-post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/new-post/new-post.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/recruiter-info/recruiter-info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/recruiter-info/recruiter-info.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/register/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/register/register.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/axios.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +95,10 @@
       <workItem from="1654586973747" duration="19969000" />
       <workItem from="1654616998542" duration="12955000" />
       <workItem from="1654772991558" duration="2981000" />
-      <workItem from="1654779063238" duration="4558000" />
+      <workItem from="1654779063238" duration="4848000" />
+      <workItem from="1654786612013" duration="749000" />
+      <workItem from="1654827574780" duration="118000" />
+      <workItem from="1654827727939" duration="14365000" />
     </task>
     <servers />
   </component>

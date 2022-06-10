@@ -6,43 +6,46 @@ import AvatarSelector from "../../components/avatar-selector/avatar-selector";
 import {Button, Form, Grid, NavBar, Selector, Space, Toast} from "antd-mobile";
 import FormInput from "../../components/form-inputs/form-input";
 import checkEmpty from "../../utils/check-empty";
-import {Navigate, useNavigate} from "react-router-dom";
+import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {updateProfileAsync} from "../../redux/reducers/user";
+import {jobLevelMap} from "../../constants/job";
+import {jobAPI} from "../../api/job";
+import {userAPI} from "../../api/user";
 
 function RecruiterInfo(props) {
   const dispatch = useDispatch()
+  const user = useSelector((state) => state.user.user)
   // TODO set default value for form items
-  const user = useSelector((state) => state.user)
 
-  const [avatar, setAvatar] = useState(user.avatar === -1 ? 0 : user.avatar)
-  const [name, setName] = useState(user.name)
-  const [company, setCompany] = useState(user.company)
-  const [jobPostList, setJobPostList] = useState(user.jobs)// useState([{title: "SDE", level: "Entry"}])
-
-  useEffect(() => {
-    // Get jobPostList and other info from server when page is about to mount
-    /*dispatch(getProfileAsync({
-      // _id: user._id,
-      _id: "629b3eefebfad22e4a47dd85",
-    })).catch((err) => {
-      console.log(err)
-      Toast.show({
-        icon: 'fail',
-        content: err.message(),
-      })
-    });*/
-  }, [])
+  const [avatar, setAvatar] = useState(0)
+  const [name, setName] = useState('')
+  const [company, setCompany] = useState('')
+  // const [jobs, setJobs] = useState([{title: "SDE", level: 1, _id: '1'}, {title: "SE", level: 2, _id: '2'}])
+  // const [selectedJobId, setSelectedJobId] = useState('')
 
   const navigate = useNavigate()
 
-  const selectorOptions = jobPostList.map(((job, index) => {
-    return {
-      label: job.title,
-      description: job.level + ' Level',
-      value: job._id,
-    }
-  }))
+  // const selectorOptions = jobs.map(((job, index) => {
+  //   return {
+  //     label: job.title,
+  //     description: jobLevelMap[job.level] + ' Level',
+  //     value: job._id,
+  //   }
+  // }))
+  //
+  // useEffect(() => {
+  //   console.log('loading info...');
+  //   async function fetchProfile(userId) {
+  //     const response = await userAPI.getProfile(userId)
+  //     setAvatar(response.data.avatar)
+  //     setName(response.data.name)
+  //     setCompany(response.data.company)
+  //     setDescription(response.data.description)
+  //   }
+  //   fetchProfile(userId);
+  //   // Fetch user profile & job list
+  // }, [])
 
   const submitRecruiterInfo = () => {
     if (checkEmpty(name, "Empty Name")) return;
@@ -80,7 +83,7 @@ function RecruiterInfo(props) {
   return (
     <div className='recruiter-info'>
       <NavBar onBack={() => navigate("/")}>
-        Complete Your Profile
+        Update Your Profile
       </NavBar>
 
       <Form
@@ -88,30 +91,39 @@ function RecruiterInfo(props) {
         footer={<Button block loading='auto' color='primary' onClick={submitRecruiterInfo}>Submit</Button>}
       >
         <Space direction='vertical' block style={{ '--gap': '3px' }}>
-          <Form.Item name='Avatar'>
+          <Form.Item>
             <AvatarSelector avatar={avatar} setAvatar={setAvatar}/>
           </Form.Item>
           <FormInput name='Name' val={name} setVal={setName}/>
           <FormInput name='Company Name' val={company} setVal={setCompany}/>
-          <Form.Item name='Job Posts'>
-            <div style={{'textAlign':'center'}}>Job Posts List</div>
-             {/*Job Posts List*/}
-            <Button block color='success' onClick={() => navigate("/new-post")}>Add a Post</Button>
-            <Grid columns={2}>
-              <Button color='warning' onClick={() => {
-                navigate("/new-post", {
-                  state: {
-                    title: "xxx",
-                  },
-                })
-              }}>Modify Selected</Button>
-              <Button color='danger'>Delete Selected</Button>
-            </Grid>
-            <Selector
-              columns={2}
-              options={selectorOptions}
-            />
-          </Form.Item>
+          {/*<Form.Item>*/}
+          {/*  <div style={{'textAlign':'center'}}>Job Posts List</div>*/}
+          {/*   /!*Job Posts List*!/*/}
+          {/*  <Button block color='success' onClick={() =>*/}
+          {/*      navigate("/new-post", {*/}
+          {/*        state: {*/}
+          {/*          action: 'add',*/}
+          {/*        },*/}
+          {/*      }*/}
+          {/*    )}>Add a Post</Button>*/}
+          {/*  <Grid columns={2}>*/}
+          {/*    <Button color='warning' onClick={() => {*/}
+          {/*      navigate("/new-post", {*/}
+          {/*        state: {*/}
+          {/*          action: 'update',*/}
+          {/*          jobId: selectedJobId,*/}
+          {/*        },*/}
+          {/*      })*/}
+          {/*    }}>Update Selected</Button>*/}
+          {/*    <Button color='danger'>Delete Selected</Button>*/}
+          {/*  </Grid>*/}
+          {/*  <Selector*/}
+          {/*    columns={2}*/}
+          {/*    options={selectorOptions}*/}
+          {/*    defaultValue={jobs.length > 0 ? [jobs[0]._id] : []}*/}
+          {/*    onChange={(value) => {setSelectedJobId(value[0])}}*/}
+          {/*  />*/}
+          {/*</Form.Item>*/}
         </Space>
       </Form>
     </div>

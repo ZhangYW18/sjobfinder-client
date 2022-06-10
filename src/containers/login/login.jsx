@@ -46,8 +46,8 @@ function Login(props) {
           icon: 'success',
           content: resp.payload.msg,
         })
-        if (!resp.payload.data.avatar)
-          toInfo(resp.payload.data.identity);
+        if (!resp.payload.data.user.avatar)
+          toInfo(resp.payload.data.user.identity);
         else
           toMain();
       } else {
@@ -60,7 +60,7 @@ function Login(props) {
       console.log(err)
       Toast.show({
         icon: 'fail',
-        content: err.message(),
+        content: err.toString(),
       })
     });
   }

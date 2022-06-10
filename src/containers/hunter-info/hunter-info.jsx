@@ -13,8 +13,8 @@ import {updateProfileAsync} from "../../redux/reducers/user";
 function HunterInfo(props) {
   const dispatch = useDispatch()
 
-  const user = useSelector((state) => state.user)
-  // TODO set default value for form items
+  const user = useSelector((state) => state.user.user)
+
   const [avatar, setAvatar] = useState(user.avatar === -1 ? 0 : user.avatar)
   const [name, setName] = useState(user.name)
   const [preference, setPreference] = useState(user.preference)
@@ -40,6 +40,7 @@ function HunterInfo(props) {
           icon: 'success',
           content: resp.payload.msg,
         });
+        navigate("/");
       } else {
         Toast.show({
           icon: 'fail',

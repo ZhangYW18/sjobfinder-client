@@ -22,7 +22,6 @@ function Register(props) {
   const navigate = useNavigate();
 
   const dispatch = useDispatch()
-  const loading = useSelector((state) => state.user.loading)
 
   const toLogin = () => navigate("/login", { replace: true })
   const toInfo = (identity) => {
@@ -67,7 +66,7 @@ function Register(props) {
       console.log(err)
       Toast.show({
         icon: 'fail',
-        content: err.message(),
+        content: err.toString(),
       })
     });
   }
@@ -85,7 +84,7 @@ function Register(props) {
         <Form
           layout='horizontal'
           footer={
-            <Button block onClick={register} color='primary' size='middle' loading={loading}>
+            <Button block onClick={register} color='primary' size='middle' loading='auto'>
               Register
             </Button>
           }

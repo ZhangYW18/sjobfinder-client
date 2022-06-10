@@ -30,18 +30,11 @@ export const updateProfileAsync = createAsyncThunk(
 
 const initialState = {
   // required fields for a user
-  _id: '',
-  username: '',
-  identity: '',
-  // optional fields for a user
-  name: '',
-  avatar: -1,
-  introduction: '',
-  preference: '',
-  company: '',
-  jobs: [],
-
-  loading: false, // 'idle' | 'pending'
+  user: {
+    _id: '',
+    username: '',
+    identity: '',
+  }
 }
 
 export const userSlice = createSlice({
@@ -50,37 +43,18 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     // Handle loginAsync
-    builder.addCase(loginAsync.pending, (state, action) => {
-      state.loading = true;
-    });
     builder.addCase(loginAsync.fulfilled, (state, action) => {
-      // console.log('fulfilled', action);
+      console.log('fulfilled', action.payload.data);
       if (action.payload.code === 0) {
-        state = action.payload.data;
+        state.user = action.payload.data.user;
       }
-      state.loading = false;
     });
     // Handle registerAsync
-    builder.addCase(registerAsync.pending, (state, action) => {
-      state.loading = true;
-    });
     builder.addCase(registerAsync.fulfilled, (state, action) => {
       // console.log('fulfilled', action);
       if (action.payload.code === 0) {
-        state = action.payload.data;
+        state.user = action.payload.data.user;
       }
-      state.loading = false;
-    });
-    // Handle updateProfileAsync
-    builder.addCase(updateProfileAsync.pending, (state, action) => {
-      //state.loading = true;
-    });
-    builder.addCase(updateProfileAsync.fulfilled, (state, action) => {
-      // console.log('fulfilled', action);
-      if (action.payload.code === 0) {
-        state = action.payload.data;
-      }
-      //state.loading = false;
     });
   },
 })

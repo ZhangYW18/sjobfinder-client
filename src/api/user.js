@@ -17,4 +17,7 @@ export const userAPI = {
       post(apiBaseUrl + '/user/profile', {
         _id, name, avatar, introduction, preference, company
       }),
+  // getProfile:
+  //   (userId) => axios.
+  //     get(apiBaseUrl + `/user/profile/${userId}`),
 }
