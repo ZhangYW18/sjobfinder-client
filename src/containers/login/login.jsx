@@ -9,7 +9,7 @@ import {
 import Logo from "../../components/logo/logo";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {loginAsync} from "../../redux/reducers/user";
 import checkEmpty from "../../utils/check-empty";
 
@@ -21,7 +21,6 @@ function Login(props) {
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
-  const loading = useSelector((state) => state.user.loading)
 
   const toRegister = () => navigate("/register", { replace: true })
   // TODO debug
@@ -41,7 +40,7 @@ function Login(props) {
       username: username,
       password: password,
     })).then((resp) => {
-      console.log('resp', resp)
+      // console.log('resp', resp)
       if (resp.payload.code === 0) {
         Toast.show({
           icon: 'success',
@@ -80,7 +79,7 @@ function Login(props) {
           layout='horizontal'
           footer={
             <div>
-              <Button block onClick={login} color='primary' size='large' loading={loading}>
+              <Button block onClick={login} color='primary' size='large' loading='auto'>
                 Login
               </Button>
               <Button block onClick={toRegister} size='large'>

@@ -29,27 +29,53 @@ export const updateProfileAsync = createAsyncThunk(
 )
 
 const initialState = {
-  // required fields for a user
+  // Common filed
   user: {
+    // required fields for a user
     _id: '',
     username: '',
     identity: '',
     avatar: -1,
-  }
+  },
+  // Recruiter-only field, only save (_id, title, level) fields for a job
+  jobs: []
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-
+    logout: ((state, action) => {
+      state.user = initialState.user;
+      state.jobs = initialState.jobs;
+    }),
+    addJob: ((state, action) => {
+      //console.log('add job payload', action.payload);
+      state.jobs.push(action.payload.job);
+    }),
+    updateJob: ((state, action) => {
+      //console.log('update job payload', action.payload);
+      const updatedJobId = action.payload.job._id;
+      state.jobs = state.jobs.map(value => (value._id === updatedJobId ? action.payload.job : value));
+    }),
+    deleteJob: ((state, action) => {
+      //console.log('delete job payload', action.payload);
+      const updatedJobId = action.payload.jobId;
+      for (let i = 0; i < state.jobs.length; i++) {
+        if (state.jobs.at(i)._id === updatedJobId) {
+          state.jobs.splice(i, 1);
+          break;
+        }
+      }
+    })
   },
   extraReducers: (builder) => {
     // Handle loginAsync
     builder.addCase(loginAsync.fulfilled, (state, action) => {
-      console.log('fulfilled', action.payload.data);
+      // console.log('fulfilled', action.payload.data);
       if (action.payload.code === 0) {
         state.user = action.payload.data.user;
+        state.jobs = action.payload.data.jobs;
       }
     });
     // Handle registerAsync
@@ -69,5 +95,5 @@ export const userSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { } = userSlice.actions
+export const {logout, addJob, updateJob, deleteJob} = userSlice.actions
 export default userSlice.reducer

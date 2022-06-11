@@ -4,7 +4,7 @@ import React from "react";
 function FormInput(props) {
   return (
     <Form.Item name={props.name}>
-      <Input placeholder={props.name}
+      <Input placeholder={props.placeholder}
              value={props.val}
              onChange={val => {
                props.setVal(val)

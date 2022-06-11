@@ -13,7 +13,7 @@ import Personal from "../personal/personal";
 
 function Main(props) {
 
-  const user = useSelector((state) => state.user.user)
+  const user = useSelector((state) => state.userReducer.user)
 
   return (
     <div>

@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/containers/personal/personal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form-inputs/form-input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form-inputs/form-input.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/job-detail/job-detail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/job-detail/job-detail.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/login/login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/new-post/new-post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/job-detail/job-detail.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/personal/personal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/personal/personal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/recruiter-info/recruiter-info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/recruiter-info/recruiter-info.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +98,9 @@
       <workItem from="1654786612013" duration="749000" />
       <workItem from="1654827574780" duration="118000" />
       <workItem from="1654827727939" duration="14784000" />
-      <workItem from="1654848592468" duration="9111000" />
+      <workItem from="1654848592468" duration="9987000" />
+      <workItem from="1654858964277" duration="355000" />
+      <workItem from="1654931387171" duration="14793000" />
     </task>
     <servers />
   </component>

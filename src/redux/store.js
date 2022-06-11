@@ -5,6 +5,6 @@ import userReducer from "./reducers/user"
 // Doc Reference: https://redux-toolkit.js.org/api/configureStore
 export default configureStore({
   reducer: {
-    user: userReducer,
+    userReducer: userReducer,
   },
 })

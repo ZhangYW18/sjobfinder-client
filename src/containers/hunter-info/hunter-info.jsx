@@ -13,7 +13,7 @@ import {updateProfileAsync} from "../../redux/reducers/user";
 function HunterInfo(props) {
   const dispatch = useDispatch()
 
-  const user = useSelector((state) => state.user.user)
+  const user = useSelector((state) => state.userReducer.user)
 
   const [avatar, setAvatar] = useState(user.avatar === -1 ? 0 : user.avatar)
   const [name, setName] = useState(user.name)
@@ -67,12 +67,12 @@ function HunterInfo(props) {
         footer={<Button block color='primary' onClick={submitHunterInfo}>Submit</Button>}
       >
         <Space direction='vertical' block style={{ '--gap': '3px' }}>
-          <Form.Item name='Avatar'>
+          <Form.Item name='avatar'>
             <AvatarSelector avatar={avatar} setAvatar={setAvatar}/>
           </Form.Item>
-          <FormInput name='Name' val={name} defaultValue={name} setVal={setName}/>
-          <FormInput name='Job Preference' val={preference} defaultValue={preference} setVal={setPreference}/>
-          <Form.Item name='Self Introduction'>
+          <FormInput placeholder='Name' val={name} defaultValue={name} setVal={setName}/>
+          <FormInput plcaeholder='Job Preference' val={preference} defaultValue={preference} setVal={setPreference}/>
+          <Form.Item name='introduction'>
             <TextArea
               placeholder='Self Introduction'
               value={introduction}

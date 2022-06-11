@@ -1,18 +1,18 @@
 /*
   Recruiter Info Component
  */
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import AvatarSelector from "../../components/avatar-selector/avatar-selector";
 import {Button, Form, NavBar, Space, Toast} from "antd-mobile";
 import FormInput from "../../components/form-inputs/form-input";
 import checkEmpty from "../../utils/check-empty";
-import {Navigate, useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {updateProfileAsync} from "../../redux/reducers/user";
 
 function RecruiterInfo(props) {
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.user.user)
+  const user = useSelector((state) => state.userReducer.user)
   // TODO set default value for form items
 
   const [avatar, setAvatar] = useState(user.avatar === -1 ? 0 : user.avatar)
@@ -33,7 +33,7 @@ function RecruiterInfo(props) {
       name: name,
       company: company,
     })).then((resp) => {
-      console.log('resp', resp)
+      // console.log('resp', resp)
       if (resp.payload.code === 0) {
         Toast.show({
           icon: 'success',
@@ -69,8 +69,8 @@ function RecruiterInfo(props) {
           <Form.Item>
             <AvatarSelector avatar={avatar} setAvatar={setAvatar}/>
           </Form.Item>
-          <FormInput name='Name' val={name} defaultValue={user.name} setVal={setName} />
-          <FormInput name='Company Name' val={company} defaultValue={user.company} setVal={setCompany}/>
+          <FormInput plcaeholder='Name' val={name} defaultValue={user.name} setVal={setName} />
+          <FormInput placeholder='Company Name' val={company} defaultValue={user.company} setVal={setCompany}/>
         </Space>
       </Form>
     </div>
