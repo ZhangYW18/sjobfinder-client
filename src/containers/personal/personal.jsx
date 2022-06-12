@@ -13,6 +13,7 @@ import {useNavigate} from "react-router-dom";
 import {jobLevelMap} from "../../constants/job";
 import {jobAPI} from "../../api/job";
 import {logout as logoutUser, deleteJob} from "../../redux/reducers/user";
+import Cookies from "js-cookie";
 
 // JobsSelector component for recruiter users
 function JobsSelector(props) {
@@ -143,6 +144,8 @@ function Personal(props) {
   const jobs = useSelector((state) => state.userReducer.jobs)
 
   const logout = () => {
+    // Clear cookie and redux
+    Cookies.remove('userid');
     dispatch(logoutUser());
     Toast.show({
       content: 'Logout Success',
@@ -168,7 +171,22 @@ function Personal(props) {
           <AutoCenter style={{'fontSize': '22px'}}>{user.name}</AutoCenter>
           { user.identity === 'recruiter' ?
             <AutoCenter>{user.company}</AutoCenter>
-            : null
+            : <Space/>
+          }
+          {
+            user.identity === 'hunter' ?
+              <List.Item>
+                <TextArea
+                  placeholder={'Job Preference: ' + user.preference}
+                  autoSize={{ minRows: 1, maxRows: 1000 }}
+                  disabled
+                  style={{
+                    '--font-size': '16px',
+                    '--disabled-color': 'black',
+                  }}
+                />
+              </List.Item>
+              : null
           }
           {
             user.identity === 'hunter' ?
@@ -177,7 +195,10 @@ function Personal(props) {
                   placeholder={user.introduction}
                   autoSize={{ minRows: 1, maxRows: 1000 }}
                   disabled
-                  style={{'--font-size': '14px'}}
+                  style={{
+                    '--font-size': '14px',
+                    '--disabled-color': 'black'
+                  }}
                 />
               </List.Item>
               : null

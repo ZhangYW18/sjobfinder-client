@@ -34,7 +34,7 @@ function HunterInfo(props) {
       preference,
       introduction,
     })).then((resp) => {
-      console.log('resp', resp)
+      //console.log('resp', resp)
       if (resp.payload.code === 0) {
         Toast.show({
           icon: 'success',

@@ -23,8 +23,9 @@ function Login(props) {
   const dispatch = useDispatch()
 
   const toRegister = () => navigate("/register", { replace: true })
-  // TODO debug
-  const toMain = () => navigate("/personal", { replace: true })
+  const toMain = (identity) => {
+    navigate(`/${identity}-main`, {replace: true})
+  }
   const toInfo = (identity) => {
     if (identity === 'hunter')
       navigate("/hunter-info", { replace: true });
@@ -40,16 +41,19 @@ function Login(props) {
       username: username,
       password: password,
     })).then((resp) => {
-      // console.log('resp', resp)
+      console.log('resp', resp)
       if (resp.payload.code === 0) {
         Toast.show({
           icon: 'success',
           content: resp.payload.msg,
         })
+        // If the user have not submitted its profile, then let the user go to profile page and fill out the form.
+        // Else go to main page.
+        const identity = resp.payload.data.user.identity;
         if (!resp.payload.data.user.avatar)
-          toInfo(resp.payload.data.user.identity);
+          toInfo(identity);
         else
-          toMain();
+          toMain(identity);
       } else {
         Toast.show({
           icon: 'fail',

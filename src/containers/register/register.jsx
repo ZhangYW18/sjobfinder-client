@@ -9,7 +9,7 @@ import {
 import Logo from "../../components/logo/logo";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {registerAsync} from "../../redux/reducers/user";
 import checkEmpty from "../../utils/check-empty";
 

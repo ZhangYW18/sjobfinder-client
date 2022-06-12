@@ -4,7 +4,7 @@ import Login from "./containers/login/login";
 import Register from "./containers/register/register";
 import React from "react";
 
-export default () => {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -16,5 +16,4 @@ export default () => {
   );
 }
 
-
-
+export default App;
