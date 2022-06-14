@@ -11,9 +11,11 @@ import Personal from "../personal/personal";
 import Cookies from "js-cookie";
 import MainPage from "../main-page/main-page";
 import Redirect from "../../components/redirect/redirect";
-import RecruiterMain from "../main-page/recruiter-main/recruiter-main";
-import HunterMain from "../main-page/hunter-main/hunter-main";
 import {useSelector} from "react-redux";
+import Chats from "../chats/chats";
+import NavFooter from "../../components/nav-footer/nav-footer";
+
+import './main.css'
 
 function Main(props) {
   const userId = Cookies.get('userid');
@@ -30,23 +32,24 @@ function Main(props) {
   }
 
   return (
-    <div>
+    <div className="app">
       <Routes>
-        <Route index path='/' element={<MainPage/>}/>
+        <Route index path='/' element={<MainPage />} />
         {/*
         Whatever other routes the user may request, we redirect them all to main page
-        if they have logged in.
+        if they have logged in in Redirect component.
         .*/}
-        <Route path='*' element={<Redirect/>}/>
-        <Route path="job-detail" element={<JobDetail/>} />
-        <Route path="personal" element={<Personal/>}/>
-
-        {user.identity === 'hunter' ? <Route path="hunter-main" element={<HunterMain/>}/>
-          : <Route path="recruiter-main" element={<RecruiterMain/>}/>}
-        {user.identity === 'hunter' ? <Route path="hunter-info" element={<HunterInfo/>}/>
-          : <Route path="recruiter-info" element={<RecruiterInfo/>}/>}
-
+        <Route path='*' element={<Redirect />} />
+        <Route path="job-detail" element={<JobDetail />} />
+        <Route path="personal" element={<Personal />} />
+        <Route path="chats" element={<Chats />} />
+        {user.identity === 'hunter' ? <Route path="hunter-info" element={<HunterInfo />} />
+          : <Route path="recruiter-info" element={<RecruiterInfo />} />}
       </Routes>
+
+      <div className="app-footer">
+        <NavFooter/>
+      </div>
     </div>
   );
 }

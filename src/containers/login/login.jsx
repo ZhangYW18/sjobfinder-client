@@ -24,7 +24,7 @@ function Login(props) {
 
   const toRegister = () => navigate("/register", { replace: true })
   const toMain = (identity) => {
-    navigate(`/${identity}-main`, {replace: true})
+    navigate('/', {replace: true})
   }
   const toInfo = (identity) => {
     if (identity === 'hunter')
