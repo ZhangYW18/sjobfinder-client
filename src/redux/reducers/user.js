@@ -22,8 +22,8 @@ export const registerAsync = createAsyncThunk(
 export const updateProfileAsync = createAsyncThunk(
   'user/profile',
   async (args, thunkAPI) => {
-    const {_id, name, avatar, introduction, preference, company} = args
-    const response = await userAPI.updateProfile(_id, name, avatar, introduction, preference, company)
+    const {_id, name, avatar, introduction, headline, company} = args
+    const response = await userAPI.updateProfile(_id, name, avatar, introduction, headline, company)
     return response.data
   }
 )
@@ -86,7 +86,7 @@ export const userSlice = createSlice({
       }
     });
     builder.addCase(updateProfileAsync.fulfilled, (state, action) => {
-      // console.log('fulfilled', action);
+      console.log('fulfilled', action);
       if (action.payload.code === 0) {
         state.user = action.payload.data.user;
       }

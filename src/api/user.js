@@ -13,11 +13,11 @@ export const userAPI = {
         username, password, identity
       }),
   updateProfile:
-    (_id, name, avatar, introduction, preference, company) => axios.
+    (_id, name, avatar, introduction, headline, company) => axios.
       post(apiBaseUrl + '/user/profile', {
-        _id, name, avatar, introduction, preference, company
+        _id, name, avatar, introduction, headline, company
       }),
-  // getProfile:
-  //   (userId) => axios.
-  //     get(apiBaseUrl + `/user/profile/${userId}`),
+  getUserByIdentity:
+    (identity) => axios.
+      get(apiBaseUrl + `/user/identity/${identity}`),
 }

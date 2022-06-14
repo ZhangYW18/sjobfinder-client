@@ -17,7 +17,7 @@ function HunterInfo(props) {
 
   const [avatar, setAvatar] = useState(user.avatar === -1 ? 0 : user.avatar)
   const [name, setName] = useState(user.name)
-  const [preference, setPreference] = useState(user.preference)
+  const [headline, setHeadline] = useState(user.headline)
   const [introduction, setIntroduction] = useState(user.introduction)
   // TODO add a picker to select education level
   // const [education, setEducation] = useState('')
@@ -28,13 +28,12 @@ function HunterInfo(props) {
     // Submit info to server and update
     dispatch(updateProfileAsync({
       _id: user._id,
-      //_id: "629d83d538155d457dcbea77",
       avatar: avatar,
       name: name,
-      preference,
+      headline,
       introduction,
     })).then((resp) => {
-      //console.log('resp', resp)
+      console.log('resp', resp)
       if (resp.payload.code === 0) {
         Toast.show({
           icon: 'success',
@@ -71,7 +70,7 @@ function HunterInfo(props) {
             <AvatarSelector avatar={avatar} setAvatar={setAvatar}/>
           </Form.Item>
           <FormInput placeholder='Name' val={name} defaultValue={name} setVal={setName}/>
-          <FormInput plcaeholder='Job Preference' val={preference} defaultValue={preference} setVal={setPreference}/>
+          <FormInput plcaeholder='Headline' val={headline} defaultValue={headline} setVal={setHeadline}/>
           <Form.Item name='introduction'>
             <TextArea
               placeholder='Self Introduction'

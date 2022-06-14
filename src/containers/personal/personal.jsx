@@ -169,25 +169,7 @@ function Personal(props) {
             />
           </AutoCenter>
           <AutoCenter style={{'fontSize': '22px'}}>{user.name}</AutoCenter>
-          { user.identity === 'recruiter' ?
-            <AutoCenter>{user.company}</AutoCenter>
-            : <Space/>
-          }
-          {
-            user.identity === 'hunter' ?
-              <List.Item>
-                <TextArea
-                  placeholder={'Job Preference: ' + user.preference}
-                  autoSize={{ minRows: 1, maxRows: 1000 }}
-                  disabled
-                  style={{
-                    '--font-size': '16px',
-                    '--disabled-color': 'black',
-                  }}
-                />
-              </List.Item>
-              : null
-          }
+          <AutoCenter>{user.identity === 'recruiter' ? user.company : user.headline}</AutoCenter>
           {
             user.identity === 'hunter' ?
               <List.Item>

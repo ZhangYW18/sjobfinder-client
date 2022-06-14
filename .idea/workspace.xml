@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/nav-footer/nav-footer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/chats/chats.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/main/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/main/main.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/main/main.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants/common.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/job.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/login/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/main-page/main-page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main-page/main-page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/main-page/recruiter-main/recruiter-main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main-page/recruiter-main/recruiter-main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/personal/personal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/personal/personal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +105,7 @@
       <workItem from="1655045251782" duration="871000" />
       <workItem from="1655048803535" duration="653000" />
       <workItem from="1655124787335" duration="2516000" />
-      <workItem from="1655195534597" duration="809000" />
+      <workItem from="1655195534597" duration="8528000" />
     </task>
     <servers />
   </component>
