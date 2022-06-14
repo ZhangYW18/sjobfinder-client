@@ -13,7 +13,7 @@ export const jobAPI = {
         _id, title, level, description
       }),
   get:
-    (jobId) => axios.get(apiBaseUrl + `/job/get/${jobId}`),
+    (jobId) => axios.get(apiBaseUrl + `/job/get${typeof(jobId) === "string" ? '/' + jobId : ''}`),
   delete:
     (jobId) => axios.get(apiBaseUrl + `/job/delete/${jobId}`),
 }
