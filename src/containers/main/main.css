@@ -1,3 +1,6 @@
+.app .app-body {
+  padding-bottom: 50px;
+}
 .app .app-footer {
   position: fixed;
   bottom: 0;

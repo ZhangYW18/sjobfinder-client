@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/setupProxy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/timeAgo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/job.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/job.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/main-page/hunter-main/hunter-main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main-page/hunter-main/hunter-main.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/main-page/recruiter-main/recruiter-main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main-page/recruiter-main/recruiter-main.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/main/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/main/main.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.less" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +113,11 @@
       <workItem from="1655195534597" duration="8737000" />
       <workItem from="1655212861337" duration="60000" />
       <workItem from="1655213014119" duration="449000" />
-      <workItem from="1655213781489" duration="2552000" />
+      <workItem from="1655213781489" duration="2830000" />
+      <workItem from="1655216690643" duration="74000" />
+      <workItem from="1655266801951" duration="341000" />
+      <workItem from="1655268345661" duration="7529000" />
+      <workItem from="1655281530287" duration="698000" />
     </task>
     <servers />
   </component>

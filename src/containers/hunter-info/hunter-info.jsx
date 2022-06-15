@@ -81,7 +81,7 @@ function HunterInfo(props) {
               }}
               showCount
               maxLength={500}
-              autoSize={{ minRows: 3, maxRows: 5 }}
+              autoSize={{ minRows: 2, maxRows: 4 }}
             />
           </Form.Item>
         </Space>

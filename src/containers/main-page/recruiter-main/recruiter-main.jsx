@@ -27,7 +27,7 @@ function RecruiterMain(props) {
   return (
     <div>
       <h2>Available job hunters:</h2>
-        <Space direction={'vertical'} block style={{'paddingBottom': '50px'}}>
+      <Space direction={'vertical'} block style={{'paddingBottom': '50px'}}>
         {
           hunters.map((hunter) => {
             return (
@@ -45,7 +45,7 @@ function RecruiterMain(props) {
             )
           })
         }
-        </Space>
+      </Space>
     </div>
   );
 }

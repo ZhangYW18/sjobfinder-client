@@ -2,42 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {Button, List, Space, Toast} from "antd-mobile";
 import {jobAPI} from "../../../api/job";
 import {jobLevelMap} from "../../../constants/job";
-import {lorem} from "../../../constants/common";
+import {timeAgo} from "../../../utils/timeAgo";
 
 function HunterMain(props) {
-  const [jobs, setJobs] = useState([{
-      "_id": "62a447f7a5b4d201a7b573cf",
-      "userId": "62a2dd99b40f6562c9c6df39",
-      "title": "SRE",
-      "company": "Meta",
-      "description": lorem,
-      "level": 2,
-      "create_time": "2022-06-11T07:44:55.026Z",
-      "update_time": "2022-06-11T07:44:55.026Z",
-      "__v": 0
-    },
-    {
-      "_id": "62a44a2ca5b4d201a7b573d9",
-      "userId": "62a2dd99b40f6562c9c6df39",
-      "title": "Manager",
-      "company": "Google",
-      "description": lorem,
-      "level": 3,
-      "create_time": "2022-06-11T07:54:20.812Z",
-      "update_time": "2022-06-11T10:25:36.502Z",
-      "__v": 0
-    },
-    {
-      "_id": "62a44a2ca5b4d201a7b573d9assd",
-      "userId": "62a2dd99b40f6562c9c6df39",
-      "title": "Manager",
-      "company": "Google",
-      "description": lorem,
-      "level": 3,
-      "create_time": "2022-06-11T07:54:20.812Z",
-      "update_time": "2022-06-11T10:25:36.502Z",
-      "__v": 0
-    }]);
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     jobAPI.get().then(response => {
@@ -48,7 +16,7 @@ function HunterMain(props) {
         })
         return;
       }
-      //setJobs(response.data.data);
+      setJobs(response.data.data);
     })
   }, [])
 
@@ -59,16 +27,27 @@ function HunterMain(props) {
 
   return (
     <div>
-      <Space direction={'vertical'} block style={{'paddingBottom': '50px'}}>
+      <h2>Available jobs:</h2>
+      <Space direction={'vertical'} block>
         {
           jobs.map((job) => {
             return (
-              <List key={job._id}>
-                <List.Item description={jobLevelMap[job.level] + ' Level, posted 12 months ago'}
-                           extra={<Button onClick={() => chatWith(job.userId)}>Message</Button>}
+              <List key={job._id} style={{'--extra-max-width':`30%`}}>
+                <List.Item description={
+                              <div>
+                                <div>Posted by {job.userId.company}</div>
+                                <div>{jobLevelMap[job.level] + ' Level, posted ' + timeAgo.format(Date.parse(job.create_time))}</div>
+                              </div>
+                            }
                            style={{'backgroundColor': '#C6F7FB'}}>
                   {job.title}
                 </List.Item>
+                <List.Item prefix={'Recruiter: '+ job.userId.name}
+                           extra={
+                              <Button onClick={() => chatWith(job.userId)}>Message</Button>
+                            }
+                           style={{'backgroundColor': '#F0FDFE'}}
+                />
                 <List.Item>
                   <div>{job.description}</div>
                 </List.Item>

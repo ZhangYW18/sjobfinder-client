@@ -33,19 +33,21 @@ function Main(props) {
 
   return (
     <div className="app">
-      <Routes>
-        <Route index path='/' element={<MainPage />} />
-        {/*
-        Whatever other routes the user may request, we redirect them all to main page
-        if they have logged in in Redirect component.
-        .*/}
-        <Route path='*' element={<Redirect />} />
-        <Route path="job-detail" element={<JobDetail />} />
-        <Route path="personal" element={<Personal />} />
-        <Route path="chats" element={<Chats />} />
-        {user.identity === 'hunter' ? <Route path="hunter-info" element={<HunterInfo />} />
-          : <Route path="recruiter-info" element={<RecruiterInfo />} />}
-      </Routes>
+      <div className="app-body">
+        <Routes>
+          <Route index path='/' element={<MainPage />} />
+          {/*
+          Whatever other routes the user may request, we redirect them all to main page
+          if they have logged in in Redirect component.
+          .*/}
+          <Route path='*' element={<Redirect />} />
+          <Route path="job-detail" element={<JobDetail />} />
+          <Route path="personal" element={<Personal />} />
+          <Route path="chats" element={<Chats />} />
+          {user.identity === 'hunter' ? <Route path="hunter-info" element={<HunterInfo />} />
+            : <Route path="recruiter-info" element={<RecruiterInfo />} />}
+        </Routes>
+      </div>
 
       <div className="app-footer">
         <NavFooter/>
