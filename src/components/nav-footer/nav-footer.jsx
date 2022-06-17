@@ -32,6 +32,9 @@ function NavFooter(props) {
     },
   ]
 
+  const currentNav = tabs.find(tab => tab.key===props.pathname)
+  if (!currentNav) return;
+
   return (
     <TabBar activeKey={pathname} onChange={path => setRouteActive(path)}>
       {tabs.map(item => (

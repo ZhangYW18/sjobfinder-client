@@ -69,7 +69,7 @@ function RecruiterInfo(props) {
           <Form.Item>
             <AvatarSelector avatar={avatar} setAvatar={setAvatar}/>
           </Form.Item>
-          <FormInput plcaeholder='Name' val={name} defaultValue={user.name} setVal={setName} />
+          <FormInput placeholder='Name' val={name} defaultValue={user.name} setVal={setName} />
           <FormInput placeholder='Company Name' val={company} defaultValue={user.company} setVal={setCompany}/>
         </Space>
       </Form>

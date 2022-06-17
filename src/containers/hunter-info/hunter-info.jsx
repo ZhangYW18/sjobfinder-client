@@ -70,7 +70,7 @@ function HunterInfo(props) {
             <AvatarSelector avatar={avatar} setAvatar={setAvatar}/>
           </Form.Item>
           <FormInput placeholder='Name' val={name} defaultValue={name} setVal={setName}/>
-          <FormInput plcaeholder='Headline' val={headline} defaultValue={headline} setVal={setHeadline}/>
+          <FormInput placeholder='Headline' val={headline} defaultValue={headline} setVal={setHeadline}/>
           <Form.Item name='introduction'>
             <TextArea
               placeholder='Self Introduction'

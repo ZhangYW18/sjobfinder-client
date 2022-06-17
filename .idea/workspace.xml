@@ -2,19 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/setupProxy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/timeAgo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/chat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav-footer/nav-footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav-footer/nav-footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/chats/chats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/chats/chats.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/hunter-info/hunter-info.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/main-page/hunter-main/hunter-main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main-page/hunter-main/hunter-main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/main-page/recruiter-main/recruiter-main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main-page/recruiter-main/recruiter-main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/main/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/job-detail/job-detail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/job-detail/job-detail.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/main/main.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/recruiter-info/recruiter-info.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/recruiter-info/recruiter-info.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +118,14 @@
       <workItem from="1655216690643" duration="74000" />
       <workItem from="1655266801951" duration="341000" />
       <workItem from="1655268345661" duration="7529000" />
-      <workItem from="1655281530287" duration="698000" />
+      <workItem from="1655281530287" duration="1447000" />
+      <workItem from="1655287376802" duration="2442000" />
+      <workItem from="1655372131222" duration="77000" />
+      <workItem from="1655372303443" duration="882000" />
+      <workItem from="1655382120084" duration="288000" />
+      <workItem from="1655384746156" duration="4760000" />
+      <workItem from="1655465477585" duration="908000" />
+      <workItem from="1655468620499" duration="7449000" />
     </task>
     <servers />
   </component>

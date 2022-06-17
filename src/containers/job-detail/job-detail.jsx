@@ -7,7 +7,6 @@ import {addJob, updateJob} from "../../redux/reducers/user";
 import {useDispatch, useSelector} from "react-redux";
 import {jobAPI} from "../../api/job";
 
-// TODO not tested, test after personal page finished
 function JobDetail(props) {
   const location = useLocation();
   const jobId = location.state.jobId;
