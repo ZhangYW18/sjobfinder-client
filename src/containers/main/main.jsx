@@ -46,7 +46,7 @@ function Main(props) {
           <Route path='*' element={<Redirect />} />
           <Route path="job-detail" element={<JobDetail />} />
           <Route path="personal" element={<Personal />} />
-          <Route path="msgs/:chatId" element={<ChatDetail />} />
+          <Route path="msgs/:partnerId" element={<ChatDetail />} />
           <Route path="chats" element={<Chats />} />
           {user.identity === 'hunter' ? <Route path="hunter-info" element={<HunterInfo />} />
             : <Route path="recruiter-info" element={<RecruiterInfo />} />}

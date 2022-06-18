@@ -12,6 +12,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {loginAsync} from "../../redux/reducers/user";
 import checkEmpty from "../../utils/check-empty";
+import {getChatsAsync} from "../../redux/reducers/chat";
 
 function Login(props) {
 
@@ -41,19 +42,37 @@ function Login(props) {
       username: username,
       password: password,
     })).then((resp) => {
-      console.log('resp', resp)
+      console.log('login resp', resp)
       if (resp.payload.code === 0) {
-        Toast.show({
-          icon: 'success',
-          content: resp.payload.msg,
-        })
-        // If the user have not submitted its profile, then let the user go to profile page and fill out the form.
-        // Else go to main page.
-        const identity = resp.payload.data.user.identity;
-        if (!resp.payload.data.user.avatar)
-          toInfo(identity);
-        else
-          toMain(identity);
+        const {_id, identity, avatar} = resp.payload.data.user;
+        // Get all chats and put data in chatReducer when logged in.
+        dispatch(getChatsAsync({userId: _id})).then( resp => {
+          console.log('login getChats resp', resp);
+          if (resp.payload.code === 0) {
+            Toast.show({
+              icon: 'success',
+              content: 'Login Success',
+            })
+            // If the user have not submitted its profile, then let the user go to profile page and fill out the form.
+            // Else go to main page.
+            if (!avatar)
+              toInfo(identity);
+            else
+              toMain(identity);
+          } else {
+            Toast.show({
+              icon: 'fail',
+              content: resp.payload.msg,
+            })
+          }
+        }).catch(err => {
+          console.log(err)
+          Toast.show({
+            icon: 'fail',
+            content: err.toString(),
+          })
+        });
+
       } else {
         Toast.show({
           icon: 'fail',
@@ -65,7 +84,7 @@ function Login(props) {
       Toast.show({
         icon: 'fail',
         content: err.toString(),
-      })
+      });
     });
   }
 

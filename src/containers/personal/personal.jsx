@@ -13,6 +13,7 @@ import {useNavigate} from "react-router-dom";
 import {jobLevelMap} from "../../constants/job";
 import {jobAPI} from "../../api/job";
 import {logout as logoutUser, deleteJob} from "../../redux/reducers/user";
+import {logout as logoutChat} from "../../redux/reducers/chat";
 import Cookies from "js-cookie";
 
 // JobsSelector component for recruiter users
@@ -147,6 +148,7 @@ function Personal(props) {
     // Clear cookie and redux
     Cookies.remove('userid');
     dispatch(logoutUser());
+    dispatch(logoutChat());
     Toast.show({
       content: 'Logout Success',
       position: 'bottom',

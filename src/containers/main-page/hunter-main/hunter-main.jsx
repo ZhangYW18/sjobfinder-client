@@ -3,9 +3,11 @@ import {Button, List, Space, Toast} from "antd-mobile";
 import {jobAPI} from "../../../api/job";
 import {jobLevelMap} from "../../../constants/job";
 import {timeAgo} from "../../../utils/timeAgo";
+import {useNavigate} from "react-router-dom";
 
 function HunterMain(props) {
   const [jobs, setJobs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     jobAPI.get().then(response => {
@@ -22,7 +24,7 @@ function HunterMain(props) {
 
   const chatWith = (userId) => {
     console.log(userId)
-    return {};
+    navigate(`/msgs/${userId}`);
   }
 
   return (
@@ -35,16 +37,16 @@ function HunterMain(props) {
               <List key={job._id} style={{'--extra-max-width':`30%`}}>
                 <List.Item description={
                               <div>
-                                <div>Posted by {job.userId.company}</div>
+                                <div>Posted by {job.recruiter.company}</div>
                                 <div>{jobLevelMap[job.level] + ' Level, posted ' + timeAgo.format(Date.parse(job.create_time))}</div>
                               </div>
                             }
                            style={{'backgroundColor': '#C6F7FB'}}>
                   {job.title}
                 </List.Item>
-                <List.Item prefix={'Recruiter: '+ job.userId.name}
+                <List.Item prefix={'Recruiter: '+ job.recruiter.name}
                            extra={
-                              <Button onClick={() => chatWith(job.userId)}>Message</Button>
+                              <Button onClick={() => chatWith(job.recruiter._id)}>Message</Button>
                             }
                            style={{'backgroundColor': '#F0FDFE'}}
                 />
