@@ -2,11 +2,13 @@ import React from 'react';
 import {TabBar} from "antd-mobile";
 import {AppOutline, MessageFill, MessageOutline, UserOutline} from "antd-mobile-icons";
 import {useLocation, useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 function NavFooter(props) {
   const navigate = useNavigate()
   const location = useLocation()
   const { pathname } = location
+  const unread = useSelector((state) => state.chatReducer.chats).unread_sum;
 
   const setRouteActive = (path) => {
     navigate(path)
@@ -23,7 +25,7 @@ function NavFooter(props) {
       title: 'Chats',
       icon: (active) =>
         active ? <MessageFill /> : <MessageOutline />,
-      badge: '99+',
+      badge: unread >= 100 ? '99+' : unread > 0 ? unread : '',
     },
     {
       key: '/personal',

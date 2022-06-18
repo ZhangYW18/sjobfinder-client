@@ -9,7 +9,7 @@ function Chats(props) {
   const navigate = useNavigate();
 
   const toChatDetail = (partnerId) => {
-    console.log(partnerId)
+    console.log('partner', partnerId)
     navigate(`/msgs/${partnerId}`);
   }
 

@@ -23,7 +23,6 @@ function HunterMain(props) {
   }, [])
 
   const chatWith = (userId) => {
-    console.log(userId)
     navigate(`/msgs/${userId}`);
   }
 

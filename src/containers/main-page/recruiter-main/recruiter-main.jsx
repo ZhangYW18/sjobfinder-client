@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {userAPI} from "../../../api/user";
 import {Avatar, Button, List, Space, Toast} from "antd-mobile";
+import {useNavigate} from "react-router-dom";
 
 function RecruiterMain(props) {
   const [hunters, setHunters] = useState([])
+  const navigate = useNavigate();
 
   // Get job hunters' list first.
   useEffect(() => {
@@ -20,8 +22,7 @@ function RecruiterMain(props) {
   }, [])
 
   const chatWith = (userId) => {
-    console.log(userId)
-    return {};
+    navigate(`/msgs/${userId}`);
   }
 
   return (

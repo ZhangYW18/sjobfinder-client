@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/chat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/chat.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/chats/chats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/chats/chats.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/login/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/main-page/hunter-main/hunter-main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main-page/hunter-main/hunter-main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/personal/personal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/personal/personal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/chat.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +115,13 @@
       <workItem from="1655384746156" duration="4760000" />
       <workItem from="1655465477585" duration="908000" />
       <workItem from="1655468620499" duration="7932000" />
-      <workItem from="1655525990339" duration="8258000" />
+      <workItem from="1655525990339" duration="8697000" />
+      <workItem from="1655535777098" duration="85000" />
+      <workItem from="1655536751663" duration="117000" />
+      <workItem from="1655536994200" duration="497000" />
+      <workItem from="1655537609693" duration="2605000" />
+      <workItem from="1655540681389" duration="8528000" />
+      <workItem from="1655559921531" duration="3120000" />
     </task>
     <servers />
   </component>
