@@ -8,7 +8,8 @@ function NavFooter(props) {
   const navigate = useNavigate()
   const location = useLocation()
   const { pathname } = location
-  const unread = useSelector((state) => state.chatReducer.chats).unread_sum;
+  const unread = useSelector((state) => state.chatReducer.unread_sum);
+  const userIdentity = useSelector((state) => state.userReducer.user.identity);
 
   const setRouteActive = (path) => {
     navigate(path)
@@ -17,7 +18,7 @@ function NavFooter(props) {
   const tabs = [
     {
       key: '/',
-      title: 'Main',
+      title: userIdentity === 'hunter' ? 'Jobs' : 'Job Hunters',
       icon: <AppOutline />,
     },
     {

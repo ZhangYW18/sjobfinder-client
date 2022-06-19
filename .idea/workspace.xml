@@ -3,10 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="4c6ce37c-6f9c-4df0-b3bd-e50a9f144109" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav-footer/nav-footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav-footer/nav-footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/chat-detail/chat-detail.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/chats/chats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/chats/chats.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/main-page/hunter-main/hunter-main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main-page/hunter-main/hunter-main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/main-page/recruiter-main/recruiter-main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/main-page/recruiter-main/recruiter-main.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/socket-io.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/socket-io.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +129,8 @@
       <workItem from="1655537609693" duration="2605000" />
       <workItem from="1655540681389" duration="8528000" />
       <workItem from="1655559921531" duration="3951000" />
-      <workItem from="1655612797266" duration="3260000" />
+      <workItem from="1655612797266" duration="3542000" />
+      <workItem from="1655620071771" duration="8146000" />
     </task>
     <servers />
   </component>

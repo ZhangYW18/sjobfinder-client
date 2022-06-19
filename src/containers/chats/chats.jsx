@@ -1,5 +1,5 @@
 import React from 'react';
-import {Ellipsis, Image, List} from "antd-mobile";
+import {Ellipsis, Empty, Image, List} from "antd-mobile";
 import {useSelector} from "react-redux";
 import {timeAgo} from "../../utils/timeAgo";
 import {useNavigate} from "react-router-dom";
@@ -8,10 +8,20 @@ function Chats(props) {
   const chats = useSelector((state) => state.chatReducer.chats);
   const navigate = useNavigate();
 
-  const toChatDetail = (partnerId) => {
-    console.log('partner', partnerId)
-    navigate(`/msgs/${partnerId}`);
+  const toChatDetail = (partner) => {
+    console.log('partner', partner)
+    navigate(`/msgs/${partner._id}`, {
+      state: {
+        user: partner,
+      },
+    });
   }
+
+  if (chats.length === 0) return (
+    <div>
+      <Empty description='No Chats' />
+    </div>
+  );
 
   return (
     <div>
@@ -20,7 +30,7 @@ function Chats(props) {
           return (
             <List.Item
               key={chat.partner._id}
-              onClick={() => toChatDetail(chat.partner._id)}
+              onClick={() => toChatDetail(chat.partner)}
               prefix={
                 <Image
                   src={require(`../../assets/images/avatars/avatar${chat.partner.avatar + 1}.png`)}

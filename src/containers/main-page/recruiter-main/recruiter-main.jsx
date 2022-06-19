@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {userAPI} from "../../../api/user";
-import {Avatar, Button, List, Space, Toast} from "antd-mobile";
+import {Avatar, Button, Empty, List, Space, Toast} from "antd-mobile";
 import {useNavigate} from "react-router-dom";
 
 function RecruiterMain(props) {
@@ -21,9 +21,19 @@ function RecruiterMain(props) {
     })
   }, [])
 
-  const chatWith = (userId) => {
-    navigate(`/msgs/${userId}`);
+  const chatWith = (user) => {
+    navigate(`/msgs/${user._id}`, {
+      state: {
+        user: user,
+      },
+    });
   }
+
+  if (hunters.length === 0) return (
+    <div>
+      <Empty description='No Available Hunters' />
+    </div>
+  );
 
   return (
     <div>
@@ -35,7 +45,7 @@ function RecruiterMain(props) {
               <List key={hunter._id}>
                 <List.Item prefix={<Avatar src={require(`../../../assets/images/avatars/avatar${hunter.avatar + 1}.png`)} />}
                            description={hunter.headline}
-                           extra={<Button onClick={() => chatWith(hunter._id)}>Message</Button>}
+                           extra={<Button onClick={() => chatWith(hunter)}>Message</Button>}
                            style={{'backgroundColor': '#C6F7FB'}}>
                   {hunter.name}
                 </List.Item>

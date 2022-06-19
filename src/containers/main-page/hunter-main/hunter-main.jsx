@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, List, Space, Toast} from "antd-mobile";
+import {Button, Empty, List, Space, Toast} from "antd-mobile";
 import {jobAPI} from "../../../api/job";
 import {jobLevelMap} from "../../../constants/job";
 import {timeAgo} from "../../../utils/timeAgo";
@@ -22,9 +22,19 @@ function HunterMain(props) {
     })
   }, [])
 
-  const chatWith = (userId) => {
-    navigate(`/msgs/${userId}`);
+  const chatWith = (user) => {
+    navigate(`/msgs/${user._id}`, {
+      state: {
+        user: user,
+      },
+    });
   }
+
+  if (jobs.length === 0) return (
+    <div>
+      <Empty description='No Available Jobs' />
+    </div>
+  );
 
   return (
     <div>
@@ -45,7 +55,7 @@ function HunterMain(props) {
                 </List.Item>
                 <List.Item prefix={'Recruiter: '+ job.recruiter.name}
                            extra={
-                              <Button onClick={() => chatWith(job.recruiter._id)}>Message</Button>
+                              <Button onClick={() => chatWith(job.recruiter)}>Message</Button>
                             }
                            style={{'backgroundColor': '#F0FDFE'}}
                 />

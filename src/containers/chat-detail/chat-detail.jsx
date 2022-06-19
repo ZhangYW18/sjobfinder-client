@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useRef, useState} from 'react';
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {Button, Image, Input, List, NavBar, Toast} from "antd-mobile";
 import {useDispatch, useSelector} from "react-redux";
 import {MessageOutline} from "antd-mobile-icons";
 
 import './chat-detail.css'
-import {getChatId} from "../../utils/chat";
 import {getChatMessagesAsync, setMessagesInConversationAllRead} from "../../redux/reducers/chat";
 import {sendMessage} from "../../utils/socket-io";
 
@@ -13,23 +12,20 @@ function ChatDetail(props) {
 
   const { partnerId } = useParams();
   const user = useSelector((state) => state.userReducer.user)
-  const chatId = getChatId(user._id, partnerId)
-  const partner = useSelector((state) => state.chatReducer.chats).find(chat => chat._id === chatId).partner;
+  const location = useLocation();
+  const partner = location.state.user;
+
   const allMsgs = useSelector((state) => state.chatReducer.msgs);
   const msgs = allMsgs[partnerId] === undefined ? [] : allMsgs[partnerId];
   const [msg, setMsg] = useState('')
 
   const dispatch = useDispatch();
+  const messagesEndRef = useRef(null)
 
   useEffect(() => {
     // Fetch chat messages.
     dispatch(getChatMessagesAsync({userId: user._id, partnerId})).then(resp => {
-      if (resp.payload.code === 0) {
-        dispatch(setMessagesInConversationAllRead({
-          from: user._id,
-          to: partnerId,
-        }));
-      } else {
+      if (resp.payload.code !== 0) {
         Toast.show({
           icon: 'fail',
           content: resp.payload.msg,
@@ -43,6 +39,16 @@ function ChatDetail(props) {
     });
   },[])
 
+  useEffect(() => {
+    // Set all received messages read
+    dispatch(setMessagesInConversationAllRead({
+      from: user._id,
+      to: partnerId,
+    }));
+    // Always automatically scroll to bottom when chatting
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  })
+
   const navigate = useNavigate();
   const back = () => {navigate(-1)}
 
@@ -53,7 +59,7 @@ function ChatDetail(props) {
 
   return (
     <div className={'chat-detail'}>
-      <NavBar onBack={back}>{partner.name}</NavBar>
+      <NavBar className={'message-box-header'} onBack={back}>{partner.name}</NavBar>
       <div className={'messages-body'}>
         <List className={'messages'} mode={'card'}>
           {msgs.map(msg => {
@@ -92,6 +98,7 @@ function ChatDetail(props) {
             );
           })}
         </List>
+        <div ref={messagesEndRef} />
       </div>
 
       <div className={'message-box-footer'}>
