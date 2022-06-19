@@ -86,7 +86,7 @@ export const userSlice = createSlice({
       }
     });
     builder.addCase(updateProfileAsync.fulfilled, (state, action) => {
-      console.log('fulfilled', action);
+      // console.log('fulfilled', action);
       if (action.payload.code === 0) {
         state.user = action.payload.data.user;
       }

@@ -24,8 +24,8 @@ function JobDetail(props) {
   const submit = () => {
     if (checkEmpty(title, "Empty Name")) return;
     if (checkEmpty(description, "Empty Company Name")) return;
-    console.log(location.state);
-    console.log('userId', userId)
+    //console.log(location.state);
+    //console.log('userId', userId)
 
     let api;
     if (action === 'update') {
@@ -35,7 +35,7 @@ function JobDetail(props) {
     }
     // Submit info to server and add
     api(action === 'update' ? jobId : userId, title, level, description).then(resp => {
-      console.log("resp", resp)
+      //console.log("resp", resp)
       if (resp.data.code === 0) {
         Toast.show({
           icon: 'success',
@@ -58,7 +58,7 @@ function JobDetail(props) {
         })
       }
     }).catch(err => {
-      console.log(err)
+      //console.log(err)
       Toast.show({
         icon: 'fail',
         content: err.message(),
@@ -89,7 +89,7 @@ function JobDetail(props) {
           <Radio.Group
             value={level}
             onChange={val => {
-              console.log(level)
+              //console.log(level)
               setLevel(val)
             }}
           >
@@ -109,7 +109,7 @@ function JobDetail(props) {
               setDescription(val)
             }}
             showCount
-            maxLength={500}
+            maxLength={1500}
             autoSize={{ minRows: 2, maxRows: 5 }}
           />
         </Form.Item>

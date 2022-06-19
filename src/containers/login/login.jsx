@@ -42,12 +42,12 @@ function Login(props) {
       username: username,
       password: password,
     })).then((resp) => {
-      console.log('login resp', resp)
+      //console.log('login resp', resp)
       if (resp.payload.code === 0) {
         const {_id, identity, avatar} = resp.payload.data.user;
         // Get all chats and put data in chatReducer when logged in.
         dispatch(getChatsAsync({userId: _id})).then( resp => {
-          console.log('login getChats resp', resp);
+          //console.log('login getChats resp', resp);
           if (resp.payload.code === 0) {
             Toast.show({
               icon: 'success',

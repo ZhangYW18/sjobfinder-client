@@ -1,15 +1,15 @@
 import React from 'react';
 import {Ellipsis, Empty, Image, List} from "antd-mobile";
 import {useSelector} from "react-redux";
-import {timeAgo} from "../../utils/timeAgo";
 import {useNavigate} from "react-router-dom";
+import timeAgoFormatter from "../../utils/timeAgo";
 
 function Chats(props) {
   const chats = useSelector((state) => state.chatReducer.chats);
   const navigate = useNavigate();
 
   const toChatDetail = (partner) => {
-    console.log('partner', partner)
+    //console.log('partner', partner)
     navigate(`/msgs/${partner._id}`, {
       state: {
         user: partner,
@@ -29,8 +29,10 @@ function Chats(props) {
         {chats.map(chat => {
           return (
             <List.Item
+              arrow={false}
               key={chat.partner._id}
               onClick={() => toChatDetail(chat.partner)}
+              style={{'--active-background-color': '#C6F7FB'}}
               prefix={
                 <Image
                   src={require(`../../assets/images/avatars/avatar${chat.partner.avatar + 1}.png`)}
@@ -42,16 +44,16 @@ function Chats(props) {
               }
               description={<Ellipsis direction='end' content={chat.lastMessage.content} />}
               extra={
-                <div>
+                <div style={{width: '20px'}}>
                   {/* Show time of last message */}
                   <div>
-                    {timeAgo.format(Date.parse(chat.lastMessage.date))}
+                    {timeAgoFormatter.format(chat.lastMessage.date)}
                   </div>
                   {/* Show number of unread messages */}
                   <div style={{
                     float: 'right',
                     background: 'lightblue',
-                    width: '20px',
+                    width: '15px',
                     textAlign: 'center',
                     visibility: chat.count_unread !== 0 ? 'visible' : 'hidden',
                   }}>

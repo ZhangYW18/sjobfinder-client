@@ -9,6 +9,15 @@
   margin-top: 40px;
   margin-bottom: -20px;
 }
+.chat-detail .messages-body .messages .message .message-text {
+  background: #C6F7FB;
+  height: fit-content;
+  border-radius: 15px;
+  width: fit-content;
+  line-height: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .chat-detail .message-box-footer {
   position: fixed;
   bottom: 0;

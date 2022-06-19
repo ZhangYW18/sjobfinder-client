@@ -4,7 +4,7 @@ import {
   Button,
   Grid,
   Image,
-  List,
+  List, Modal,
   Selector, Space,
   TextArea, Toast
 } from "antd-mobile";
@@ -23,6 +23,7 @@ function JobsSelector(props) {
   const [jobs, setJobs] = useState(props.jobs)
   // Mock data for jobs: useState([{title: "SDE", level: 1, _id: '1'}, {title: "SE", level: 2, _id: '2'}])
   const [selectedJobId, setSelectedJobId] = useState('') // useState(props.jobs[0]._id)
+  const [selectedJobTitle, setSelectedJobTitle] = useState('')
 
   const selectorOptions = jobs.map(((job) => {
     return {
@@ -70,16 +71,9 @@ function JobsSelector(props) {
   }
 
   const deleteSelectedJob = () => {
-    if (selectedJobId === '') {
-      Toast.show({
-        content: 'Please select a job',
-        duration: 1000,
-      });
-      return;
-    }
     // Get the detailed information of the job first, and then send it to job-detail page when navigating.
     jobAPI.delete(selectedJobId).then(function (response) {
-      console.log(response)
+      //console.log(response)
       if (response.data.code === 0) {
         Toast.show({
           icon: 'success',
@@ -92,7 +86,7 @@ function JobsSelector(props) {
             newJobs.push(jobs.at(i))
           }
         }
-        console.log(newJobs)
+        //console.log(newJobs)
         setJobs(newJobs)
       } else {
         Toast.show({
@@ -117,7 +111,14 @@ function JobsSelector(props) {
         columns={2}
         options={selectorOptions}
         //defaultValue={jobs.length > 0 ? [jobs[0]._id] : []}
-        onChange={(value) => {setSelectedJobId(value.length > 0 ? value[0] : '')}}
+        onChange={(value, options) => {
+          setSelectedJobId(value.length > 0 ? value[0] : '');
+          if (value.length > 0) {
+            const job = selectorOptions.find(option => option.value === value[0]);
+            setSelectedJobTitle(job.label);
+            //console.log(job.label)
+          }
+        }}
       />
       <Space/>
       <Button block color='warning' onClick={updateSelectedJob}>Update / View Selected</Button>
@@ -129,7 +130,23 @@ function JobsSelector(props) {
               },
             }
           )}>Post a Job</Button>
-        <Button color='danger' onClick={deleteSelectedJob}>Delete Selected</Button>
+        <Button color='danger' onClick={() => {
+          if (selectedJobId === '') {
+            Toast.show({
+              content: 'Please select a job',
+              duration: 1000,
+            });
+            return;
+          }
+          Modal.confirm({
+            cancelText: 'Cancel',
+            confirmText: 'Ok',
+            content:  `Are you sure that you want to delete job "${selectedJobTitle}"?`,
+            onConfirm: async () => {
+              deleteSelectedJob();
+            },
+          })
+        }}>Delete Selected</Button>
       </Grid>
       <Space/>
     </List.Item>

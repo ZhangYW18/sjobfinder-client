@@ -5,4 +5,12 @@ import en from 'javascript-time-ago/locale/en'
 TimeAgo.addDefaultLocale(en)
 
 // Create formatter (English).
-export const timeAgo = new TimeAgo('en-US')
+const timeAgo = new TimeAgo('en-US')
+
+let timeAgoFormatter = {};
+
+timeAgoFormatter.format = (date, style=`mini-minute-now`) => {
+  return timeAgo.format(Date.parse(date), style)
+}
+
+export default timeAgoFormatter;

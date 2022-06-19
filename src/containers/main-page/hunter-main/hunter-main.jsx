@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Empty, List, Space, Toast} from "antd-mobile";
 import {jobAPI} from "../../../api/job";
 import {jobLevelMap} from "../../../constants/job";
-import {timeAgo} from "../../../utils/timeAgo";
+import timeAgoFormatter from "../../../utils/timeAgo";
 import {useNavigate} from "react-router-dom";
 
 function HunterMain(props) {
@@ -47,7 +47,7 @@ function HunterMain(props) {
                 <List.Item description={
                               <div>
                                 <div>Posted by {job.recruiter.company}</div>
-                                <div>{jobLevelMap[job.level] + ' Level, posted ' + timeAgo.format(Date.parse(job.create_time))}</div>
+                                <div>{jobLevelMap[job.level] + ' Level, posted ' + timeAgoFormatter.format(job.create_time)}</div>
                               </div>
                             }
                            style={{'backgroundColor': '#C6F7FB'}}>

@@ -90,9 +90,8 @@ function ChatDetail(props) {
                     /> : null
                 }
               >
-                <div className={'message-text'} style={{borderRadius: 15, width: 'fit-content', lineHeight: '35px',
-                  height: 35, background: '#C6F7FB', float: msg.from === partner._id ? 'left' : 'right'}}>
-                  &nbsp;&nbsp;{msg.content}&nbsp;&nbsp;
+                <div className={'message-text'} style={{float: msg.from === partner._id ? 'left' : 'right'}}>
+                  {msg.content}
                 </div>
               </List.Item>
             );
