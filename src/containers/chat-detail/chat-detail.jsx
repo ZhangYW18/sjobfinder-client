@@ -97,7 +97,7 @@ function ChatDetail(props) {
       <div className={'message-box-footer'}>
         <Input
           value={msg}
-          onChange={ val => { setMsg(val); console.log(msg); } }
+          onChange={ val => { setMsg(val) } }
           clearable
           placeholder="Type..."
           style={{float: 'left', width: '85%'}}

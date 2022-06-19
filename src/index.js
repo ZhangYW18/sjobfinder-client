@@ -22,3 +22,5 @@ root.render(
     </PersistGate>
   </Provider>
 );
+
+export default store;

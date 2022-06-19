@@ -1,6 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {chatAPI} from "../../api/chat";
 import {getChatId} from "../../utils/chat";
+import Cookies from "js-cookie";
+import user from "./user";
 
 export const getChatsAsync = createAsyncThunk(
   'chat/get',
@@ -27,7 +29,7 @@ const initialState = {
   // msgs saves every message in conversations.
   // Init with a pair of meaningless keys and values to define it as a map.
   msgs: {
-    'dsdsf': [],
+    'partnerId': [],
   },
 }
 
@@ -35,6 +37,20 @@ export const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
+    addMessage: (state, action) => {
+      const msg = action.payload.data;
+      const userId = Cookies.get('userid');
+      if (msg.from !== userId && msg.to !== userId) return;
+      let partnerId;
+      if (msg.from === userId) partnerId = msg.to; else partnerId = msg.from;
+      if (state.msgs[partnerId] === undefined) state.msgs[partnerId] = [];
+      state.msgs[partnerId].push({
+        _id: msg._id,
+        content: msg.content,
+        create_time: msg.create_time,
+        from: msg.from,
+      });
+    },
     logout: (state, action) => {
       state.chats = initialState.chats;
       state.unread_sum = initialState.unread_sum;
@@ -71,5 +87,5 @@ export const chatSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {logout, setMessagesInConversationAllRead} = chatSlice.actions
+export const {logout, setMessagesInConversationAllRead, addMessage} = chatSlice.actions
 export default chatSlice.reducer
