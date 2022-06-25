@@ -58,7 +58,7 @@ function HunterInfo(props) {
   return (
     <div className='recruiter-info'>
       <NavBar onBack={() => navigate("/personal")}>
-        Complete Your Profile
+        Update Your Profile
       </NavBar>
 
       <Form
